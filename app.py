@@ -41,7 +41,19 @@ def about():
 
 @app.route('/submit')
 def submit():
-    return render_template('Submit_Summary.html')
+    if request.method=='GET':
+        return render_template('Submit_summary.html')
+    else:
+        s = Summary(
+            name = request.form['name'],
+            subject = request.form['subject'],
+            title = request.form['title'],
+            picture = request.form['picture'],
+            summary = request.form['summary'])
+
+        db.session.add(s)
+        db.session.commit()
+        return redirect(url_for('summary'))
 
 @app.route('/summary')
 def summary():
