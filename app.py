@@ -41,7 +41,7 @@ def about():
 
 @app.route('/submit')
 def submit():
-    return render_template('Submit_summary.html')
+    return render_template('Submit_Summary.html')
 
 @app.route('/summary')
 def summary():
